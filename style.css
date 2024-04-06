@@ -16,8 +16,6 @@
   }
   
 
-
-
 * {
     margin: 0px;
     padding: 0px;
@@ -63,7 +61,7 @@ header a:hover {
 section {
     padding: 4% 0% 11% 3%;
     font-family: Salsa;
-    font-size: 3vw;
+    font-size: 3vw; /* NOVO */
     font-style: italic;
     font-weight: bold;
     line-height: 210%;
@@ -79,7 +77,8 @@ section {
 .imgfundo > p {
     text-align: justify;
     background-color: rgba(0, 0, 0, 0.479);
-    width: 47%;
+    display: inline-block; /* NOVO */
+    padding: 6px; /* NOVO */
 }
 
 #flor {

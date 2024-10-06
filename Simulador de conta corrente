@@ -1,0 +1,133 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyMlTUzAHT2QDo2Z+JuVonhn",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/GustavoSNF/CORDEL/blob/main/Simulador%20de%20conta%20corrente\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 8,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "fUnrr4-G8o09",
+        "outputId": "3ac08669-79e5-41a8-8aa3-475fa694272e"
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": [
+            "1 -> Ver Saldo 2 -> Sacar 3 -> Depositar 4 -> Encerrar \n",
+            "Escolha uma opção: 1\n",
+            "Saldo atual: 1000.00\n",
+            "Escolha uma opção:2\n",
+            "Insira o valor a sacar: 250\n",
+            "Saque realizado\n",
+            "Saldo atual: 750.00\n",
+            "Escolha uma opção:3\n",
+            "Insira o valor a depositar: 7000000000000000\n",
+            "Deposito efetuado\n",
+            "Saldo atual: 7000000000000750.00\n",
+            "Escolha uma opção:2\n",
+            "Insira o valor a sacar: 8000000000000000000\n",
+            "Saque não efetuado\n",
+            "Saldo atual: 7000000000000750.00\n",
+            "Escolha uma opção:3\n",
+            "Insira o valor a depositar: 0\n",
+            "Deposito não efetuado\n",
+            "Saldo atual: 7000000000000750.00\n",
+            "Escolha uma opção:4\n"
+          ]
+        }
+      ],
+      "source": [
+        "print(f'1 -> Ver Saldo '\n",
+        "        '2 -> Sacar '\n",
+        "        '3 -> Depositar '\n",
+        "        '4 -> Encerrar ')\n",
+        "\n",
+        "\n",
+        "saldo = 1000\n",
+        "\n",
+        "#Função Geral\n",
+        "def movimentarConta(opcao):\n",
+        "\n",
+        "  global saldo\n",
+        "  while (opcao != 4):\n",
+        "    if(opcao == 1):\n",
+        "      imprimirSaldo()\n",
+        "    elif(opcao == 2):\n",
+        "      sacarValor(float(input('Insira o valor a sacar: ')))\n",
+        "    elif(opcao == 3):\n",
+        "      depositarValor(float(input('Insira o valor a depositar: ')))\n",
+        "\n",
+        "    opcao = int(input('Escolha uma opção:'))\n",
+        "\n",
+        "\n",
+        "#Função auxiliar\n",
+        "def sacarValor(valor):\n",
+        "  global saldo\n",
+        "\n",
+        "  if(valor <= 0 or valor > saldo):\n",
+        "    print(f'Saque não efetuado')\n",
+        "    print(f'Saldo atual: {saldo:.2f}')\n",
+        "  else:\n",
+        "    saldo -= valor\n",
+        "    print(f'Saque realizado')\n",
+        "    print(f'Saldo atual: {saldo:.2f}')\n",
+        "\n",
+        "\n",
+        "#Função auxiliar2\n",
+        "def depositarValor(valor):\n",
+        "  global saldo\n",
+        "\n",
+        "  if(valor <= 0):\n",
+        "    print(f'Deposito não efetuado')\n",
+        "    print(f'Saldo atual: {saldo:.2f}')\n",
+        "  else:\n",
+        "    saldo += valor\n",
+        "    print(f'Deposito efetuado')\n",
+        "    print(f'Saldo atual: {saldo:.2f}')\n",
+        "\n",
+        "\n",
+        "#Função auxiliar3\n",
+        "def imprimirSaldo():\n",
+        "  print(f'Saldo atual: {saldo:.2f}')\n",
+        "\n",
+        "#Função auxiliar4\n",
+        "def imprimirMenu():\n",
+        "  print(f'1 -> Ver Saldo '\n",
+        "        '2 -> Sacar '\n",
+        "        '3 -> Depositar '\n",
+        "        '4 -> Encerrar')\n",
+        "\n",
+        "movimentarConta(int(input('Escolha uma opção: ')))\n",
+        "\n"
+      ]
+    }
+  ]
+}
